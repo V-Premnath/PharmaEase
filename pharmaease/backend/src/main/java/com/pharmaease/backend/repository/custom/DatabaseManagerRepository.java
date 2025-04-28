@@ -1,10 +1,11 @@
 package com.pharmaease.backend.repository.custom;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
+import com.pharmaease.backend.context.ContextHolder;
 import com.pharmaease.backend.repository.DatabaseManagerRepositoryInterface;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 @Repository
@@ -12,6 +13,8 @@ public class DatabaseManagerRepository implements DatabaseManagerRepositoryInter
 
 	@PersistenceContext
     private EntityManager entityManager;
+
+	private static final Logger logger = LoggerFactory.getLogger(DatabaseManagerRepository.class);
 	
 	@Override
 	@Transactional
@@ -24,9 +27,10 @@ public class DatabaseManagerRepository implements DatabaseManagerRepositoryInter
 
             String query = "CREATE DATABASE IF NOT EXISTS " + dbName;
             entityManager.createNativeQuery(query).executeUpdate();
-            System.out.println("Database " + dbName + " created successfully.");
+            logger.info("Database " + dbName + " created successfully."+"Context : "+ContextHolder.getCurrentDb());
+            
         } catch (Exception e) {
-            System.err.println("Error creating database: " + e.getMessage());
+            logger.info("Error creating database: " + e.getMessage());
             // Optionally rethrow or handle the exception
         }
     }

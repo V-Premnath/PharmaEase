@@ -1,0 +1,104 @@
+.upload-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #002f40, #005f73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .paper {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .paper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+    animation: shine 5s linear infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: rotate(0deg) translateX(0);
+    }
+    100% {
+      transform: rotate(360deg) translateX(0);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .upload-title {
+    font-size: 1.8rem;
+    color: #002f40;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .file-input {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border: 2px dashed #005f73;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  .file-input:hover {
+    border-color: #00b4d8;
+  }
+  
+  .preview {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  .preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .upload-btn {
+    background-color: #00b4d8;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .upload-btn:hover {
+    background-color: #0096c7;
+    transform: scale(1.05);
+  }
+  

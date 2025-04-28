@@ -1,0 +1,59 @@
+.upload-medicine-container {
+    background: linear-gradient(145deg, #ffffff, #e6f9f1);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 47, 64, 0.15);
+    max-width: 700px;
+    margin: auto;
+}
+
+.upload-medicine-container h2 {
+    text-align: center;
+    color: #002f40;
+    margin-bottom: 2rem;
+}
+
+.medicine-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #002f40;
+    margin-bottom: 0.4rem;
+}
+
+.form-group input {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline-color: #54eea1;
+}
+
+.submit-btn {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: linear-gradient(145deg, #002f40, #001e2f);
+    color: #e1f1e9;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(145deg, #01485f, #002f40);
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}

@@ -1,9 +1,17 @@
 
 package com.pharmaease.backend.model.pharmacy;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "sales")
@@ -13,31 +21,34 @@ public class Sale {
     @Column(name = "sale_id")
     private Long id;
     
-    @Column(name = "user_id", nullable = false)
-    private int user;
+    @Column(name = "sale_user_id", nullable = true)
+    private Long userId;
     
-    @Column(name = "druggist_id", nullable = false)
-    private int druggist;
+    @Column(name = "sale_druggist_id", nullable = false)
+    private Long druggistId;
+    
+    @Column( name = "sale_medicine_list")
+	private List<Long> medicineList;
     
     @Column(name = "sale_total_amount", nullable = false)
     private double totalAmount;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "sales_date")
+    @Column(name = "sale_date")
     private Date salesDate;
     
     @Column(name = "sale_payment_method", nullable = false)
     private String paymentMethod;
     
-    @Column(name = "sale_transaction_id")
+    @Column(name = "sale_transaction_id",nullable =true)
     private String transactionId;
     
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public int getUser() { return user; }
-    public void setUser(int user) { this.user = user; }
-    public int getDruggist() { return druggist; }
-    public void setDruggist(int druggist) { this.druggist = druggist; }
+    public Long getUser() { return userId; }
+    public void setUser(Long user) { this.userId = user; }
+    public Long getDruggist() { return druggistId; }
+    public void setDruggist(Long druggist) { this.druggistId = druggist; }
     public double getTotalAmount() { return totalAmount; }
     public void setTotalAmount(double totalAmount) { this.totalAmount = totalAmount; }
     public Date getSalesDate() { return salesDate; }
@@ -48,7 +59,7 @@ public class Sale {
     public void setTransactionId(String transactionId) { this.transactionId = transactionId; }
 	@Override
 	public String toString() {
-		return "Sale [id=" + id + ", user=" + user + ", druggist=" + druggist + ", totalAmount=" + totalAmount
+		return "Sale [id=" + id + ", user=" + userId + ", druggist=" + druggistId + ", totalAmount=" + totalAmount
 				+ ", salesDate=" + salesDate + ", paymentMethod=" + paymentMethod + ", transactionId=" + transactionId
 				+ "]";
 	}
@@ -60,10 +71,10 @@ public class Sale {
 	 * @param paymentMethod
 	 * @param transactionId
 	 */
-	public Sale(int user, int druggist, double totalAmount, Date salesDate, String paymentMethod,
+	public Sale(Long user, Long druggist, double totalAmount, Date salesDate, String paymentMethod,
 			String transactionId) {
-		this.user = user;
-		this.druggist = druggist;
+		this.userId = user;
+		this.druggistId = druggist;
 		this.totalAmount = totalAmount;
 		this.salesDate = salesDate;
 		this.paymentMethod = paymentMethod;

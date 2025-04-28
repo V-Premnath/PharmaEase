@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.pharmaease.backend.controller.AuthController;
+
 import com.pharmaease.backend.model.superadmin.User;
 import com.pharmaease.backend.security.JwtService;
 import com.pharmaease.backend.service.superadmin.UserAuthenticationService;
@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler {
 	@Autowired
 	private JwtService jwtService;
-	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CustomOAuth2SuccessHandler.class);
 	@Autowired
 	private UserAuthenticationService userAuth ;	
 	
@@ -52,6 +52,10 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
 	    
 	    String role = retrieved_user.getRole().getName();  // or fetch from DB
 	    String username = retrieved_user.getUsername();
+	    String dbname ="";
+	    if (retrieved_user.getPharmacy() != null) {
+	    dbname = retrieved_user.getPharmacy().getDatabaseName();}
+	    
 //	    Map<String, Object> claims = Map.of("role", role);
 	    logger.info("===========================================MAPING ROLES AND USERNAME?EMAIL role : "+role);
 	    String jwt = jwtService.generateToken(email, role);
@@ -61,12 +65,15 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
         response.setHeader("Authorization", jwt); 
         response.setHeader("role", role); 
         response.setHeader("username", username);
+        response.setHeader("dbname",dbname);
         if (( role.equals( "PHARMACY_ADMIN" ) || role.equals( "DRUGGIST" ) ) && ( retrieved_user.getPharmacy()==null) ) {
         	String redirectUrl = "http://localhost:5173/waiting-approval?email="+email;
-            response.sendRedirect(redirectUrl);
+        	logger.info("Partailly redirecting to frontend DB not created : [ "+ dbname+" ]");
+        	response.sendRedirect(redirectUrl);
             return;
         }
-        String redirectUrl = "http://localhost:5173/oauth2-redirect?token=" + jwt+"&role="+role+"&username="+username;
+        logger.info("Successfully redirecting to frontend");
+        String redirectUrl = "http://localhost:5173/oauth2-redirect?token=" + jwt+"&role="+role+"&username="+username+"&dbname="+dbname;
         response.sendRedirect(redirectUrl);
         return;
 	}

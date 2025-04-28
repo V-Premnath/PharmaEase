@@ -1,0 +1,173 @@
+/* Container, form & general */
+.sales-entry-container {
+    max-width: 960px;
+    margin: 40px auto;
+    background: #fff;
+    color:#002f40;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  }
+  .sales-entry-heading {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 32px;
+  }
+  .sales-entry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .form-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .form-group {
+    flex: 1;
+  }
+  .form-label,
+  label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .form-input,
+  .qty-input,
+  select {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  .qty-input {
+    width: 60px;
+  }
+  
+  /* Add button */
+  .add-medicine-button {
+    background-color: #10b981;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .add-medicine-button:hover {
+    background-color: #059669;
+  }
+  
+  /* Table */
+  .medicine-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  .medicine-table th,
+  .medicine-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+  }
+  .remove-btn {
+    background-color: #f7dddd;
+    border: 2px solid #fca5a1;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  .remove-btn:hover {
+    background-color: #dc2626;
+  }
+  .total-amount {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Submit */
+  .submit-button {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 20px;
+  }
+  .submit-button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Modal */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  .modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  .modal-content h3 {
+    margin-bottom: 16px;
+    color: darkblue;
+  }
+  .search-bar {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  
+  .search-bar:focus {
+    border-color: #3b82f6; /* Nice blue border on focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* subtle glow */
+  }
+  
+  .medicine-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .medicine-list li {
+    color: bl;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .medicine-list button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .medicine-list button:hover {
+    background-color: #2563eb;
+  }
+  

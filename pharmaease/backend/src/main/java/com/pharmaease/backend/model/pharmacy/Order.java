@@ -3,8 +3,12 @@ package com.pharmaease.backend.model.pharmacy;
 import java.time.LocalDate;
 import java.util.List;
 
-
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="orders")
@@ -15,19 +19,19 @@ public class Order {
 	@Column(name = "order_id")
 	private Long id;
 	
-	@Column(name = "user_id", nullable = false)
+	@Column(name = "order_user_id", nullable = false)
     private int user;
 	
-	@Column( name = "medicine_list")
+	@Column( name = "order_medicineId_list")
 	private List<Long> medicineList;
 	
-	@Column(name = "total_order_amount")
+	@Column(name = "order_total_amount")
 	private float totalOrderAmount;
 	
 	@Column(name = "order_date")
 	private LocalDate orderDate;
 	
-	@Column(name = "transaction_id")
+	@Column(name = "order_transaction_id")
 	private long transactionId;
 
 	/**

@@ -19,7 +19,7 @@ public class UserAuthenticationService {
 	private static final Logger logger = LoggerFactory.getLogger(UserAuthenticationService.class);
 	
 	
-	public User checkExistingUser(String email) throws UserNotFoundException{
+	public User checkExistingUser(String email) {
 		
 		User user = ur.findFirstByUserEmail(email);
 			if (user == null) {

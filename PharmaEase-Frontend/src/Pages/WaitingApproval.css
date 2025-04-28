@@ -1,0 +1,21 @@
+
+.disapprove-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .disapprove-btn:hover {
+    background-color: #c82333;
+  }
+  
+.disapprove-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }

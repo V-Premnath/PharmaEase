@@ -1,0 +1,25 @@
+.customer-dashboard {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f9fa;
+    color: #002f40;
+    min-height: 100vh;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #00402b;
+    color: #54eea1;
+    margin-bottom: 30px;
+    border-radius: 10px;
+  }
+  
+  
+  
+  .loading-text {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+  }
+  

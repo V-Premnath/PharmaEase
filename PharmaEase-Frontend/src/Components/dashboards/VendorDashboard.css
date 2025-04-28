@@ -1,0 +1,55 @@
+.vendor-dashboard-container {
+    background-color: #f4fdf7;
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .vendor-header h1 {
+    text-align: center;
+    color: #002f40;
+    margin-bottom: 2rem;
+  }
+  
+  .policy-section {
+    background: linear-gradient(145deg, #ffffff, #e6f9f1);
+    padding: 1.5rem 2rem;
+    border-left: 8px solid #002f40;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 2px 8px rgba(0, 47, 64, 0.1);
+  }
+  
+  .policy-section h2 {
+    color: #002f40;
+    margin-bottom: 1rem;
+  }
+  
+  .policy-section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .scroll-button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .upload-button {
+    background: linear-gradient(145deg, #002f40, #001e2f);
+    color: #f1faf6;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-button:hover {
+    background: linear-gradient(145deg, #01485f, #002f40);
+  }
+  

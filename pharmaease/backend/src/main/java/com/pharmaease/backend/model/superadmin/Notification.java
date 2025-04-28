@@ -2,11 +2,17 @@ package com.pharmaease.backend.model.superadmin;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "notifications")
-public class Notification {@Id
+public class Notification {
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "notification_id")
     private Long id;
@@ -123,6 +129,12 @@ public class Notification {@Id
 	 */
 	public void setIsRead(boolean isRead) {
 		this.isRead = isRead;
+	}
+
+	@Override
+	public String toString() {
+		return "Notification [id=" + id + ", senderId=" + senderId + ", receiverId=" + receiverId + ", message="
+				+ message + ", time=" + time + ", isRead=" + isRead + "]";
 	}
 	
 }

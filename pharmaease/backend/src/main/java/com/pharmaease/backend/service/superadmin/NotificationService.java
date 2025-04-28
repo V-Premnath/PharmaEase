@@ -28,10 +28,15 @@ public class NotificationService {
 		return notifyList;
 	}
 	public Notification getNotificationBySenderId(Long id) {
-		Notification notif  = not.findById(id).orElse(new Notification());
-		logger.info(" in notserviceNOtificatiopn : "+notif.getId());
+		Notification notif  = not.findAllBySenderId(id).orElse(new Notification());
+		logger.info(" in notservice get by Sender ID Notification : "+notif.getId());
 		return notif;
 		
+	}
+	public Notification getNotificationById(Long id) {
+		Notification notif  = not.findById(id).orElse(new Notification());
+		logger.info(" in notservice get by Id Notification : "+notif.getId());
+		return notif;
 		
 	}
 	@Transactional
@@ -40,4 +45,10 @@ public class NotificationService {
 		return;
 	}
 
+	
+	public void createNotification(Notification notif) {
+		not.saveAndFlush(notif);
+		logger.info("Inside creating notification "+not.findById(notif.getId()).orElse(new Notification()).toString());
+		return;
+	}
 }

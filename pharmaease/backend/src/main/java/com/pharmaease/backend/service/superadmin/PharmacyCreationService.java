@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.pharmaease.backend.model.superadmin.Notification;
 import com.pharmaease.backend.model.superadmin.Pharmacy;
 import com.pharmaease.backend.repository.custom.DatabaseManagerRepository;
-import com.pharmaease.backend.repository.superadmin.NotificationRepo;
 import com.pharmaease.backend.repository.superadmin.PharmacyRepo;
 
 @Service
@@ -22,7 +21,7 @@ public class PharmacyCreationService {
 	@Autowired 
 	private PharmacyRepo pharmacyRepo;
 	@Autowired
-	private NotificationRepo notify_repo;
+	private NotificationService notifServ;
 	
 
 	private static final Logger logger = LoggerFactory.getLogger(PharmacyCreationService.class);
@@ -35,7 +34,7 @@ public class PharmacyCreationService {
 
 	public boolean enrollPharmacy(String pharmacyName,String address,Long userid) {
 		logger.info("Inside the enroll Pharmacy method in service layer");
-		// TODO Auto-generated method stub
+		
 		if (pharmacyRepo.findByName(pharmacyName) != null) {
             throw new IllegalArgumentException("Pharmacy already exists");
         }
@@ -60,7 +59,9 @@ public class PharmacyCreationService {
         	not.setReceiverId(Integer.toUnsignedLong(2));//hard code superadmin userId
         	not.setTime(LocalDateTime.now());
         	
-        	not = notify_repo.saveAndFlush(not);
+        	notifServ.createNotification(not);
+        	not = notifServ.getNotificationById(not.getId());
+        			
         	if (not == null) {
         		logger.info("Notification creation unsuccessful");
         		return false;

@@ -1,0 +1,59 @@
+/* Gradient turquoise-mint background */
+.error-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #40e0d0, #98ff98);
+    padding: 20px;
+  }
+  
+  /* Paper-like card */
+  .error-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Error code styling */
+  .error-code {
+    font-size: 72px;
+    color: #20b2aa;
+    margin: 0;
+  }
+  
+  /* Main message */
+  .error-message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+    margin: 10px 0;
+  }
+  
+  /* Sub-description */
+  .error-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Button styling */
+  .home-button {
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-button:hover {
+    background-color: #1aa39b;
+  }
+  

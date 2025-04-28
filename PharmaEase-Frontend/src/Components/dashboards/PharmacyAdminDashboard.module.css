@@ -1,0 +1,72 @@
+.dashboardContainer {
+    padding: 2rem;
+    background-color: #d5f6fc;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .header {
+    color: #080808;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    display: flex;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .cardContent {
+    padding: 1.5rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.1rem;
+    color: #444;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cardValue {
+    font-size: 2rem;
+    color: #1b5e20;
+    font-weight: bold;
+  }
+  
+  .expiringList {
+    list-style-type: none;
+    padding-left: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .expiringList li {
+    margin-bottom: 0.5rem;
+    color: #b71c1c;
+    font-weight: 500;
+  }
+  
+  .buttonWrapper {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .customButton {
+    background-color: #388e3c;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 2rem;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .customButton:hover {
+    background-color: #2e7d32;
+  }
+  

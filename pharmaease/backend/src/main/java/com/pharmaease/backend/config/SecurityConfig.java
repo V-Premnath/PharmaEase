@@ -1,7 +1,4 @@
 package com.pharmaease.backend.config;
-//
-//import com.pharmaease.backend.security.JwtAuthFilter;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 
@@ -19,6 +16,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.pharmaease.backend.security.JwtAuthFilter;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
@@ -39,8 +38,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/**", "/auth/**", "/oauth2/**").permitAll()
                 .anyRequest().authenticated()
             )
-            .oauth2Login(oauth2 -> oauth2.successHandler(customHandler))
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+            .oauth2Login(oauth2 -> oauth2.successHandler(customHandler)).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+            ;
 
         return http.build();
     }
@@ -50,7 +49,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));  // Frontend URL
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With","auth","role","username"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type","token", "X-Requested-With","auth","role","username","dbname"));
         configuration.setAllowCredentials(true);  // If you need cookies or authorization headers
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

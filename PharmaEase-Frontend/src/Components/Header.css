@@ -1,0 +1,164 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.flexBox {
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-logoBar {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.header-searchBar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  height: 10px;
+}
+
+.headerSearchBar {
+  display: flex;
+  align-items: center;
+  background-color: #e6f7fa;
+  border-radius: 5rem;
+  padding: 6px 10px;
+  box-shadow: 0 4px 10px rgba(248, 248, 248, 0.1);
+  width: fit-content;
+  height: 10px
+}
+
+.searchBar {
+  padding: 12px 18px;
+  width: 280px;
+  border: none;
+  border-radius: 2rem;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  color: #002f40;
+}
+
+.searchBar::placeholder {
+  color: #7a9ba5;
+  font-size: 1px;
+  opacity: 0.8;
+}
+
+.searchButton {
+  background-color: #54eea1;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  margin-left: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #44d28f;
+}
+
+
+.header-menuBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.menu-items {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.menu-items:hover {
+  cursor: pointer;
+}
+
+.menu-items span,
+.menu-items p {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* For devices smaller than 768px */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 10px;
+  }
+
+  .header-logoBar {
+    justify-content: flex-start;
+  }
+
+  .header-searchBar {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .searchBar {
+    width: 70%;
+  }
+
+  .header-menuBar {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .menu-items {
+    margin: 0 10px;
+  }
+
+  .logo img {
+    max-width: 150px;
+  }
+}
+
+/* For devices smaller than 480px */
+@media (max-width: 480px) {
+  .header-container {
+    padding: 10px;
+  }
+
+  .searchButton {
+    padding: 8px;
+  }
+
+  .searchBar {
+    width: 100%;
+  }
+
+  .header-menuBar {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .menu-items {
+    margin: 0 8px;
+  }
+
+  .logo img {
+    max-width: 120px;
+  }
+}

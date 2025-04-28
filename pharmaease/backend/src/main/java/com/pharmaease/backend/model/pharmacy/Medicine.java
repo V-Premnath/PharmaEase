@@ -1,7 +1,13 @@
 package com.pharmaease.backend.model.pharmacy;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 
 @Entity
@@ -24,15 +30,12 @@ public class Medicine {
     @Column(name = "medicine_stock",nullable = false)
     private int stock;
     
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "purchase_id", nullable = true)
-	private Purchase purchase;  // Tracks the purchase this medicine belongs to
+	@Column(name = "medicine_purchase_id", nullable = true)
+	private Long purchase;  // Tracks the purchase this medicine belongs to
     
     @Column(name = "medicine_cost",nullable = false)
     private double cost;
     
-    @Column(name = "medicine_quantity",nullable = false)
-    private int quantity;
     
     @Column(name = "medicine_type",nullable = false)
     private String type;
@@ -59,12 +62,11 @@ public class Medicine {
     public void setComposition(String composition) { this.composition = composition; }
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
-    public Purchase getVendor() { return purchase; }
-    public void setVendor(Purchase purchase) { this.purchase = purchase; }
+    public Long getVendor() { return purchase; }
+    public void setVendor(Long purchase) { this.purchase = purchase; }
     public double getCost() { return cost; }
     public void setCost(double cost) { this.cost = cost; }
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
+
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
     public LocalDate getMfgDate() { return mfgDate; }
@@ -73,8 +75,8 @@ public class Medicine {
     public void setExpDate(LocalDate expDate) { this.expDate = expDate; }
     public String getMfgBy() { return mfgBy; }
     public void setMfgBy(String mfgBy) { this.mfgBy = mfgBy; }
-    public Purchase getMedicinePurchasedFrom() { return purchase; }
-    public void MedicinePurchasedFrom(Purchase purchase) { this.purchase = purchase ; }
+    public Long getMedicinePurchasedFrom() { return purchase; }
+    public void MedicinePurchasedFrom(Long purchase) { this.purchase = purchase ; }
     public String getImg() { return img; }
     public void setImg(String Img) { this.img = Img; }
 	/**
@@ -85,14 +87,14 @@ public class Medicine {
 	 * @param stock
 	 * @param purchase
 	 * @param cost
-	 * @param quantity
+
 	 * @param type
 	 * @param mfgDate
 	 * @param expDate
 	 * @param mfgBy
 	 */
-	public Medicine( String name, String genericName, String composition, int stock, Purchase purchase,
-			double cost, int quantity, String type, LocalDate mfgDate, LocalDate expDate, String mfgBy) {
+	public Medicine( String name, String genericName, String composition, int stock, Long purchase,
+			double cost,  String type, LocalDate mfgDate, LocalDate expDate, String mfgBy) {
 		// this.id = id; Auto Generated
 		this.name = name;
 		this.genericName = genericName;
@@ -100,7 +102,6 @@ public class Medicine {
 		this.stock = stock;
 		this.purchase = purchase;
 		this.cost = cost;
-		this.quantity = quantity;
 		this.type = type;
 		this.mfgDate = mfgDate;
 		this.expDate = expDate;
@@ -112,7 +113,7 @@ public class Medicine {
 	@Override
 	public String toString() {
 		return "Medicine [id=" + id + ", name=" + name + ", genericName=" + genericName + ", composition=" + composition
-				+ ", stock=" + stock + ", purchase=" + purchase + ", cost=" + cost + ", quantity=" + quantity
+				+ ", stock=" + stock + ", purchase=" + purchase + ", cost=" + cost 
 				+ ", type=" + type + ", mfgDate=" + mfgDate + ", expDate=" + expDate + ", mfgBy=" + mfgBy + "]";
 	}
 }

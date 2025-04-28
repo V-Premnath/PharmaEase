@@ -1,5 +1,7 @@
 package com.pharmaease.backend.service.pharmacy;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,15 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.pharmaease.backend.model.superadmin.Pharmacy;
 import com.pharmaease.backend.repository.superadmin.PharmacyRepo;
-import com.pharmaease.backend.repository.superadmin.UserRepo;
 
 @Service
 public class PharmacyService {
 
 	@Autowired
 	private PharmacyRepo pr;
-	@Autowired
-	private UserRepo ur;
 	
 
 	private static final Logger logger = LoggerFactory.getLogger(PharmacyService.class);
@@ -23,25 +22,47 @@ public class PharmacyService {
 	public Pharmacy getPharamcyByAdminId(Long id) {
 		Pharmacy pharm =pr.findByAdminId(id);
 		logger.info("Optional return object in pharmacy service for id : "+id+"   "+pr.findByAdminId(id));
-		
-		
-		
-		logger.info("Pharmacy servicce: dbname :"+pharm.getDatabaseName());
+		logger.info("Pharmacy service: dbname : "+pharm.getDatabaseName());
 		
 		return pharm ;
 	}
 
-	public void updateStatus(Long pid,String string,Long adminId) {
-		// TODO Auto-generated method stubp
+	public void updatePharmacyStatus(Long pid,String string) {
+		// 
 		//Updating Pharmacy Status to "APPROVED"
-		pr.updatePharmacyStatus(pid, true);
-		//Updating the user and linking him wth the pharmacy the user is associated with
-		ur.updateUserPharmacyId(pid,adminId);
+		if (string.equals("APPROVED")){
+			pr.updatePharmacyStatus(pid, true);
+		}
+		else {
+			logger.info("Soething other than 'APPROVED' ");
+		}
 	}
 
 	public void deletePharmacyByPharmacyId(Long pid) {
-		// TODO Auto-generated method stub
+		// 
 		pr.deleteById(pid);
+	}
+	
+	public List<String> getAllPharmacies(){
+		List<String> pharmList = pr.findAllPharmacyDBNames();
+		return pharmList;
+		
+	}
+
+	public Pharmacy getPharmacyByName(String pharmacyName) {
+		// 
+		return pr.findByName(pharmacyName);
+		
+	}
+
+	public Pharmacy getPharmacyByDBName(String pharmacyDBName) {
+		return pr.findByDatabaseName(pharmacyDBName);
+	}
+
+	public Pharmacy getPharmacyById(Long pharmacyId) {
+//		 
+		return pr.findById(pharmacyId).orElse(new Pharmacy());
+		
 	}
 	
 }
