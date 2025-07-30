@@ -7,6 +7,9 @@
       "installMaven": "true",
       "installGradle": "false"
     }
+    ,    "ghcr.io/devcontainers/features/git-lfs:1": {}
   },
+
+
   "forwardPorts": [8080]
 }
