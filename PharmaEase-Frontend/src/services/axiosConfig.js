@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create a new Axios instance
 const api = axios.create({
-  baseURL: "http://localhost:8080", // ✅ your backend base URL
+  baseURL:  import.meta.env.BACKEND_BASE_URL || "http://localhost:8080",  // ✅ your backend base URL
 });
 
 // Automatically attach token from localStorage

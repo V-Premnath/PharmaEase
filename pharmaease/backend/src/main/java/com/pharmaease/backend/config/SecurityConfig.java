@@ -3,6 +3,7 @@ package com.pharmaease.backend.config;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +24,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    @Value("${FRONTEND_BASE_URL}")
+    private String FRONTEND_BASE_URL;
 	@Autowired
 	private JwtAuthFilter jwtAuthFilter;
 	@Autowired
@@ -47,7 +50,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));  // Frontend URL
+        configuration.setAllowedOrigins(Arrays.asList(FRONTEND_BASE_URL));  // Frontend URL
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type","token", "X-Requested-With","auth","role","username","dbname"));
         configuration.setAllowCredentials(true);  // If you need cookies or authorization headers

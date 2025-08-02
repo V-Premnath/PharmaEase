@@ -4,6 +4,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AuthContext from "../ContextApi/AuthContext";  
 import { Link } from "react-router-dom";
 import { Notifications } from "@mui/icons-material";
+import api from "../services/axiosConfig";
 // import "./Header.css";
 
 const Header = () => {
@@ -17,7 +18,7 @@ const Header = () => {
   }
 
   const handleSignin = () => {
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    window.location.href = `${api}/oauth2/authorization/google`;
   };
 
   const handleLogout = () => {

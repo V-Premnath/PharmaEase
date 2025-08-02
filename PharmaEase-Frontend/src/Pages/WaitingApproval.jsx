@@ -25,7 +25,7 @@ const WaitingApproval = () => {
   
   const handleWithdraw = async (email) => {
     try {
-      const response = await api.get(`http://localhost:8080/api/user/revoke-approval-request?email=${email}`);
+      const response = await api.get(`${api}/api/user/revoke-approval-request?email=${email}`);
       if (response.status === 200) {
         // Handle success
         alert("Request withdrawn successfully");

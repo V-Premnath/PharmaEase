@@ -2,6 +2,7 @@ import { Avatar, Button, Paper, Typography } from "@mui/material";
 import { useEffect } from "react";
 import './Login.css'; // Import the CSS file
 import { useNavigate } from "react-router-dom";
+import api from "../services/axiosConfig";
 
 const Login = () => {
   const navigate  =  useNavigate();
@@ -16,7 +17,7 @@ const Login = () => {
   
 
   const handleLogin = () => {
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    window.location.href = `${api}/oauth2/authorization/google`;
   };
 
   return (

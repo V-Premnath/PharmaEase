@@ -86,7 +86,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             response.getWriter().write("{\"error\":\"JWT token invalid or expired.\"}");
 
             // Or redirect to error page in frontend
-            // response.sendRedirect("http://localhost:5173/error");
+            // response.sendRedirect("https://pharmaease-1.onrender.com/error");
 
             return;
         }
