@@ -53,7 +53,7 @@ const Signup = () => {
 
     if (name === "username") {
       try {
-        const response = await axios.post(`${api}/auth/check-username`, {
+        const response = await axios.post(`${api.defaults.baseURL}/auth/check-username`, {
           username: value
         });
         if (response.status === 400) {
@@ -67,7 +67,7 @@ const Signup = () => {
     }
     if (name === "pharmacyName") {
       try {
-        const response = await axios.post(`${api}/auth/check-pharmacy-name`, {
+        const response = await axios.post(`${api.defaults.baseURL}/auth/check-pharmacy-name`, {
           pharmacyName: value
         });
         if (response.status === 400) {
@@ -85,7 +85,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${api}/auth/signup`, {
+      const response = await axios.post(`${api.defaults.baseURL}/auth/signup`, {
         ...formData,
         email,
       });

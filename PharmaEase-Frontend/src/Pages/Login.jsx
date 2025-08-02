@@ -17,7 +17,7 @@ const Login = () => {
   
 
   const handleLogin = () => {
-    window.location.href = `${api}/oauth2/authorization/google`;
+    window.location.href = `${api.defaults.baseURL}/oauth2/authorization/google`;
   };
 
   return (

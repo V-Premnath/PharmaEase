@@ -1,8 +1,15 @@
 import axios from "axios";
 
 // Create a new Axios instance
+/**
+ * Axios instance configured with the backend base URL.
+ * The base URL is taken from the environment variable `BACKEND_BASE_URL` if available,
+ * otherwise defaults to "http://localhost:8080".
+ *
+ * @type {import('axios').AxiosInstance}
+ */
 const api = axios.create({
-  baseURL:  import.meta.env.BACKEND_BASE_URL || "http://localhost:8080",  // ✅ your backend base URL
+  baseURL:  import.meta.env.VITE_BACKEND_BASE_URL || "http://localhost:8080",  // ✅ your backend base URL
 });
 
 // Automatically attach token from localStorage
