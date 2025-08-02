@@ -39,7 +39,7 @@ public class DataSourceConfig {
         log.info("Creating DataSource for >>>> SUPERADMIN DB");
         return DataSourceBuilder.create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .url("jdbc:mysql://localhost:3306/SuperAdminDB")
+                .url("jdbc:mysql://HU3W2uE3uz3EV3J.root:QOzBxVk21bPj1TWF@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/SuperAdmin_DB?sslMode=VERIFY_IDENTITY")
                 .username("root")
                 .password("Prem@123")
                 .build();
