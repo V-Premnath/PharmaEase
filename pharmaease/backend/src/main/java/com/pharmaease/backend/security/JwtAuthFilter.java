@@ -41,7 +41,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         log.info("Current DB before any filtering As of in jwt auth filter : [ "+ContextHolder.getCurrentDb()+" ]");
 
         // 🛑 Skip JWT filter for OAuth2 and auth routes
-        if (path.startsWith("/auth/") || path.startsWith("/oauth2/") || path.startsWith("/login")) {
+        if (path.startsWith("/") || path.startsWith("/auth/") || path.startsWith("/oauth2/") || path.startsWith("/login")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -50,6 +50,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             log.info("Missing or malformed Authorization header: {}", authHeader);
+            log.info("Incoming request path: {}", path);
+
 //            filterChain.doFilter(request, response); // Proceed unauthenticated
             ContextHolder.clear();
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -86,7 +88,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             response.getWriter().write("{\"error\":\"JWT token invalid or expired.\"}");
 
             // Or redirect to error page in frontend
-            // response.sendRedirect("http://localhost:5173/error");
+            // response.sendRedirect("https://pharmaease-1.onrender.com/error");
 
             return;
         }

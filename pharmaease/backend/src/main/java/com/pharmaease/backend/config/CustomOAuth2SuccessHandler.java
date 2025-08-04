@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -27,6 +28,9 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
 	private static final Logger logger = LoggerFactory.getLogger(CustomOAuth2SuccessHandler.class);
 	@Autowired
 	private UserAuthenticationService userAuth ;	
+
+	@Value("${FRONTEND_BASE_URL}")
+	private String FRONTEND_BASE_URL;
 	
 	
 	@Override
@@ -46,7 +50,7 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
 	    logger.info("==== > > > line 44 ++++ OAuth2User token.getPRincipal :   "+user.toString()+"Email: "+email+"Check Existing : "+retrieved_user);
 	    
 	    if (retrieved_user == null) {
-	    	response.sendRedirect("http://localhost:5173/signup?email="+URLEncoder.encode(email, "UTF-8"));
+	    	response.sendRedirect(FRONTEND_BASE_URL+"/signup?email="+URLEncoder.encode(email, "UTF-8"));
 	    	return;
 	    }
 	    
@@ -67,13 +71,13 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
         response.setHeader("username", username);
         response.setHeader("dbname",dbname);
         if (( role.equals( "PHARMACY_ADMIN" ) || role.equals( "DRUGGIST" ) ) && ( retrieved_user.getPharmacy()==null) ) {
-        	String redirectUrl = "http://localhost:5173/waiting-approval?email="+email;
+        	String redirectUrl = FRONTEND_BASE_URL+"/waiting-approval?email="+email;
         	logger.info("Partailly redirecting to frontend DB not created : [ "+ dbname+" ]");
         	response.sendRedirect(redirectUrl);
             return;
         }
         logger.info("Successfully redirecting to frontend");
-        String redirectUrl = "http://localhost:5173/oauth2-redirect?token=" + jwt+"&role="+role+"&username="+username+"&dbname="+dbname;
+        String redirectUrl = FRONTEND_BASE_URL+"/oauth2-redirect?token=" + jwt+"&role="+role+"&username="+username+"&dbname="+dbname;
         response.sendRedirect(redirectUrl);
         return;
 	}

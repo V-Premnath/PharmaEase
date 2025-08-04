@@ -19,8 +19,8 @@ import com.pharmaease.backend.service.superadmin.CartService;
 import com.pharmaease.backend.service.superadmin.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
-@Slf4j
+
+
 @RestController
 @RequestMapping("api/cart")
 public class CartController {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './signup.module.css';
 import axios from 'axios';
+import api from '../services/axiosConfig';
 
 const SuccessMessage = () => (
   <div className={styles.success}>
@@ -52,7 +53,7 @@ const Signup = () => {
 
     if (name === "username") {
       try {
-        const response = await axios.post('http://localhost:8080/auth/check-username', {
+        const response = await axios.post(`${api.defaults.baseURL}/auth/check-username`, {
           username: value
         });
         if (response.status === 400) {
@@ -66,7 +67,7 @@ const Signup = () => {
     }
     if (name === "pharmacyName") {
       try {
-        const response = await axios.post('http://localhost:8080/auth/check-pharmacy-name', {
+        const response = await axios.post(`${api.defaults.baseURL}/auth/check-pharmacy-name`, {
           pharmacyName: value
         });
         if (response.status === 400) {
@@ -84,7 +85,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/auth/signup', {
+      const response = await axios.post(`${api.defaults.baseURL}/auth/signup`, {
         ...formData,
         email,
       });
