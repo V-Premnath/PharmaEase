@@ -50,6 +50,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             log.info("Missing or malformed Authorization header: {}", authHeader);
+            log.info("Incoming request path: {}", path);
+
 //            filterChain.doFilter(request, response); // Proceed unauthenticated
             ContextHolder.clear();
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
