@@ -41,7 +41,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         log.info("Current DB before any filtering As of in jwt auth filter : [ "+ContextHolder.getCurrentDb()+" ]");
 
         // 🛑 Skip JWT filter for OAuth2 and auth routes
-        if (path.startsWith("/auth/") || path.startsWith("/oauth2/") || path.startsWith("/login")) {
+        if (path.startsWith("/") || path.startsWith("/auth/") || path.startsWith("/oauth2/") || path.startsWith("/login")) {
             filterChain.doFilter(request, response);
             return;
         }
