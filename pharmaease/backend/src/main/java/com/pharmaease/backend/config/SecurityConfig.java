@@ -1,6 +1,7 @@
 package com.pharmaease.backend.config;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,14 +31,19 @@ public class SecurityConfig {
 	private JwtAuthFilter jwtAuthFilter;
 	@Autowired
 	private CustomOAuth2SuccessHandler customHandler;
+
+    private static final Logger logger = Logger.getLogger(SecurityConfig.class.getName());
+
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        
+        logger.info("Configuring SecurityFilterChain with CORS and CSRF disabled");
+        
         http
             .csrf(csrf -> csrf.disable())
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))  // Enable CORS
             .authorizeHttpRequests(auth -> auth
-                // Your existing authorization rules
                 .requestMatchers("/api/**", "/auth/**", "/oauth2/**").permitAll()
                 .anyRequest().authenticated()
             )
@@ -53,7 +59,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(Arrays.asList(FRONTEND_BASE_URL));  // Frontend URL
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type","token", "X-Requested-With","auth","role","username","dbname"));
-        configuration.setAllowCredentials(true);  // If you need cookies or authorization headers
+        configuration.setAllowCredentials(true);  
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
